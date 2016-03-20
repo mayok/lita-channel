@@ -6,7 +6,7 @@ module Lita
         route   = payload[:route]
         message = payload[:message]
 
-        if message.source.room == route.extensions[:channel]
+        if message.source.room == Lita::Room.find_by_name(route.extensions[:channel]).id
           return true
         else
           return false
